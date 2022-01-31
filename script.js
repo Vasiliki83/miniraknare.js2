@@ -1,7 +1,3 @@
-
-
-// add operation
-$(document).ready (function() {
-    $( "#add").on("click", function() {
-    alert ("funkar") }) ;
-});
+function result() {
+    var points = document.getElementById("ruta").textContent;
+}
