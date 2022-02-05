@@ -1,14 +1,3 @@
-// jquert test för input värde som skall skrivas ut i en paragraf ( Calc)
-//$(document).on("click", "#add", function () { //onclick function för knapp med id Add
-//  let num1 = $("#inputNum").val() // en variabel med innehållet från inputfältet (txtNum)
-// let numAdd = num1; // variabel med innehåll av Num1 och ett + tecken
-//$("#calculation").text(numAdd); // skriver ut värdet av numAdd i paragrafen med id calc
-
-//});
-
-
-
-
 var buttonAdd = $("#add"); // variable för plus knappen som heter buttonAdd
 var buttonMinus = $("#minus"); //variable för minus knappen som heter buttonMinus
 var buttonSum = $("#sum"); //variable för likamed knappen som heter buttonSum
@@ -25,17 +14,17 @@ buttonAdd.on("click", function () {
     console.log(inputNumber.val()); // här kontrollerar vi att vi får värdet från inputNumber som är vårt input-fält
     array.push(parseFloat(inputNumber.val())); // här gör vi en push av värdet från input-fältet till vår array
     console.log(array); // här kontrollerar vi i console att vår array tagit emot värdet
-    arrayNum = inputNumber.val();
+    arrayNum = inputNumber.val(); // en variabel som lagarar värdet ifrån inputfältet
 
 
-    if (array.length == 1) {
-        calculation.append(arrayNum);
+    if (array.length == 1) { // en if sats som säger att OM arrayens längd är == 1 SÅ..
+        calculation.append(arrayNum); //då ska värdet läggas till i calculation 
 
-    } else {
+    } else { // else sats som säger att ANNARS så ska även plus tecken läggas till med värdet
         calculation.append("+" + arrayNum);
     }
 
-    inputNumber.val("");
+    inputNumber.val(""); // ställer om/ rensar textfätet
     return false;
 });
 
@@ -46,45 +35,46 @@ buttonMinus.on("click", function () {
     console.log(inputNumber.val()); // här kontrollerar vi att vi får värdet från inputNumber som är vårt input-fält
     array.push(parseFloat(-inputNumber.val())); // här gör vi en push av värdet från input-fältet till vår array
     console.log(array); // här kontrollerar vi i console att vår array tagit emot värdet
-    arrayNum = inputNumber.val();
+    arrayNum = inputNumber.val(); // en variabel som lagarar värdet ifrån inputfältet
 
 
-    if (array.length == 1) {
-        calculation.append(arrayNum);
 
-    } else {
+    if (array.length == 1) { // en if sats som säger att OM arrayens längd är == 1 SÅ..
+        calculation.append(arrayNum); //då ska värdet läggas till i calculation
+
+    } else { // else sats som säger att ANNARS så ska även minus tecken läggas till med värdet
         calculation.append("-" + arrayNum);
     }
 
-    inputNumber.val("");
-    return false;
+    inputNumber.val(""); //rensar textfältet/inputfältet     
+    return false; // ställer om/ rensar textfätet
 });
 
 //funktion för likamed knappen
 
 buttonSum.on("click", function () {
-    $("#calculation").empty();
+    $("#calculation").empty(); // rensar calculaction paragrafen
 
-    // var sumOf = array.reduce((a, b) => a + b);
-
-    var sumOf = array.reduce(function (a, b) {
-        return a + b;
+    var sumOf = array.reduce(function (a, b) { // variabel som sparar värderna i en funktion som...
+        return a + b; // räknar ut summan av arrayens värden
 
     }, 0);
-    result.append(" " + sumOf);
-    array = [];
+    result.append(" " + sumOf); // här läggs summan till under paragrafen result 
+    array = []; //rensar arrayen
 
-    return false;
+    return false; /// ställer om/ rensar calculation
 });
 
+
+// funktion för att begänsar vad som skall skrivas in i inputfältet. 
 $(document).ready(function () {
 
-    $("#inputNumber").keypress(function (e) {
-        var keyCode = e.which;
+    $("#inputNumber").keypress(function (e) { //funktion som känner av ett event när knappar trycks av användaren
+        var keyCode = e.which; //variabel som känner av specifika knapptryck(e.which)
 
-        if (!((keyCode >= 48 && keyCode <= 57 || keyCode == 46))) {
-            e.preventDefault();
-            alert("🤌🏽 Bara siffror och punkt är tillåtet...Capisce 🤌🏽 ")
+        if (!((keyCode >= 48 && keyCode <= 57 || keyCode == 46))) { //if-sats som begränsar att endast vissa knappar kan tryckas in i inputfältet
+            e.preventDefault(); // metod som stoppar en handling från att hända, som i detta fall är ogiltiga tecken i inputfältet
+            alert("🤌🏽 Bara siffror och punkt är tillåtet...Capisce 🤌🏽 ") //alert meddelande som kommer upp när ogitiga tecken skrivs i inputfältet
         }
 
     });
