@@ -1,0 +1,17 @@
+body {
+    text-align: center;
+}
+
+.calculator {
+    height: 280px;
+    width: 300px;
+    margin: auto;
+    border: 5px solid rgba(2, 128, 223, 0.564);
+    padding: 1rem;
+
+}
+
+.calc {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
